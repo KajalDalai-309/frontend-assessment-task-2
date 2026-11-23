@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Quiz App</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <div class="app-wrapper">
+
+    <div id="startScreen" class="screen active">
+      <div class="card start-card">
+        <h1>🧠 Quiz App</h1>
+        <p class="subtitle">Test your general knowledge</p>
+
+        <form id="startForm" novalidate>
+          <div class="form-group">
+            <label for="playerName">Your Name</label>
+            <input type="text" id="playerName" placeholder="Enter your name" />
+            <span class="err" id="nameErr"></span>
+          </div>
+
+          <div class="form-group">
+            <label for="questionCount">Number of Questions</label>
+            <select id="questionCount">
+              <option value="5">5</option>
+              <option value="10" selected>10</option>
+              <option value="15">15</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="difficulty">Difficulty</label>
+            <select id="difficulty">
+              <option value="easy">Easy</option>
+              <option value="medium" selected>Medium</option>
+              <option value="hard">Hard</option>
+            </select>
+          </div>
+
+          <div id="startErr" class="api-error hidden"></div>
+          <button type="submit" class="btn btn-primary" id="startBtn">Start Quiz</button>
+        </form>
+
+        <div id="bestScoreDisplay" class="best-score"></div>
+      </div>
+    </div>
+
+    <div id="quizScreen" class="screen hidden">
+      <div class="quiz-header">
+        <span id="playerLabel"></span>
+        <span id="questionCounter"></span>
+        <div class="timer-wrap">
+          <span id="timerDisplay">15</span>s
+        </div>
+      </div>
+
+      <div class="progress-wrap">
+        <div class="progress-bar" id="progressBar"></div>
+      </div>
+
+      <div class="card quiz-card">
+        <p id="questionText" class="question-text"></p>
+        <div id="optionsList" class="options-list"></div>
+        <span class="err" id="answerErr"></span>
+        <button class="btn btn-primary" id="nextBtn">Next →</button>
+      </div>
+    </div>
+
+    <div id="resultScreen" class="screen hidden">
+      <div class="card result-card">
+        <h2 id="resultTitle"></h2>
+        <div class="score-display">
+          <div class="big-score" id="bigScore"></div>
+          <div class="score-info">
+            <p id="percentageText"></p>
+            <p id="bestScoreText"></p>
+          </div>
+        </div>
+        <div id="reviewList" class="review-list"></div>
+        <button class="btn btn-primary" id="restartBtn">Play Again</button>
+      </div>
+    </div>
+
+  </div>
+
+  <script src="api.js"></script>
+  <script src="quiz.js"></script>
+  <script src="ui.js"></script>
+</body>
+</html>
+
